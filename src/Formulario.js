@@ -1,6 +1,6 @@
 // Formulario.js
 import React, { useState } from 'react';
-import './Formulario.css'; // Importe o arquivo CSS
+import './Formulario.css';
 
 const Formulario = () => {
   const [formData, setFormData] = useState({
@@ -16,10 +16,26 @@ const Formulario = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aqui você pode enviar os dados para onde quiser, como uma API ou um servidor.
-    console.log(formData);
+
+    try {
+      const response = await fetch('/api/enviar-formulario', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Formulário enviado com sucesso!');
+      } else {
+        console.error('Erro ao enviar o formulário.');
+      }
+    } catch (erro) {
+      console.error('Erro ao enviar o formulário.', erro);
+    }
   };
 
   return (
