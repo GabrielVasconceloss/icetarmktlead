@@ -20,26 +20,15 @@ const Formulario = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('https://leadicetar.vercel.app/api/enviar-formulario', {
-        method: 'POST',
+      const response = await axios.post('https://leadicetar.vercel.app/api/enviar-formulario', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
       });
   
-      if (response.ok) {
-        console.log('Formulário enviado com sucesso!');
-      } else {
-        const errorMessage = await response.text();
-        console.error('Erro ao enviar o formulário:', errorMessage);
-        // Adicione esta linha para imprimir o erro completo no console
-        console.error('Erro completo:', errorMessage);
-      }
-    } catch (erro) {
-      console.error('Erro ao enviar o formulário:', erro);
-      // Adicione esta linha para imprimir o erro completo no console
-      console.error('Erro completo:', erro);
+      console.log('Formulário enviado com sucesso!', response.data);
+    } catch (error) {
+      console.error('Erro ao enviar o formulário:', error.response ? error.response.data : error.message);
     }
   };
   
