@@ -5,7 +5,7 @@ const cors = require('cors'); // Adicione esta linha
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 app.use(bodyParser.json());
 app.use(cors()); // Adicione esta linha para configurar o CORS
