@@ -18,7 +18,7 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('https://leadicetar.vercel.app/api/enviar-formulario', {
         method: 'POST',
@@ -27,14 +27,15 @@ const Formulario = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         console.log('Formulário enviado com sucesso!');
       } else {
-        console.error('Erro ao enviar o formulário.');
+        const errorMessage = await response.text();
+        console.error('Erro ao enviar o formulário:', errorMessage);
       }
     } catch (erro) {
-      console.error('Erro ao enviar o formulário.', erro);
+      console.error('Erro ao enviar o formulário:', erro);
     }
   };
 
