@@ -35,7 +35,7 @@ const Formulario = () => {
         console.error('Erro ao enviar o formulário:', errorMessage);
       }
     } catch (erro) {
-      console.error('Erro ao enviar o formulário:', erro);
+      console.error('Erro ao enviar o formulário:', erro); // Adicionado para imprimir o erro no console
     }
   };
 
