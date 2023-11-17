@@ -33,11 +33,16 @@ const Formulario = () => {
       } else {
         const errorMessage = await response.text();
         console.error('Erro ao enviar o formulário:', errorMessage);
+        // Adicione esta linha para imprimir o erro completo no console
+        console.error('Erro completo:', errorMessage);
       }
     } catch (erro) {
-      console.error('Erro ao enviar o formulário:', erro); // Adicionado para imprimir o erro no console
+      console.error('Erro ao enviar o formulário:', erro);
+      // Adicione esta linha para imprimir o erro completo no console
+      console.error('Erro completo:', erro);
     }
   };
+  
 
   return (
     <div>

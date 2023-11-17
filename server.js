@@ -25,16 +25,17 @@ const formularioSchema = new mongoose.Schema({
 // Criar um modelo com base no esquema
 const Formulario = mongoose.model('Formulario', formularioSchema);
 
-// Lidar com a submissão do formulário
 app.post('/api/enviar-formulario', async (req, res) => {
-  try {
-    const novoFormulario = new Formulario(req.body);
-    await novoFormulario.save();
-    res.status(201).json({ mensagem: 'Formulário enviado com sucesso!' });
-  } catch (erro) {
-    res.status(500).json({ erro: 'Erro ao processar o formulário.' });
-  }
-});
+    try {
+      const novoFormulario = new Formulario(req.body);
+      await novoFormulario.save();
+      console.log('Formulário salvo com sucesso:', novoFormulario);
+      res.status(201).json({ mensagem: 'Formulário enviado com sucesso!' });
+    } catch (erro) {
+      console.error('Erro ao processar o formulário:', erro);
+      res.status(500).json({ erro: 'Erro ao processar o formulário.' });
+    }
+  });
 
 app.listen(PORT, () => {
   console.log(`Servidor está executando na porta ${PORT}`);
