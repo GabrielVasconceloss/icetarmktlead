@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Adicione esta linha
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
+app.use(cors()); // Adicione esta linha para configurar o CORS
 
 // Conectar ao MongoDB (substitua a URL pelo seu próprio URL do MongoDB)
 mongoose.connect('mongodb+srv://icetar:784512@icetar.qt1ztin.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });

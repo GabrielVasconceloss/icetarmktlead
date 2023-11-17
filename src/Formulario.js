@@ -20,7 +20,7 @@ const Formulario = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/enviar-formulario', {
+      const response = await fetch('https://leadicetar.vercel.app/api/enviar-formulario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
